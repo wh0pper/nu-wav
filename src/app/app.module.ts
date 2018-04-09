@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { Vis1Component } from './vis1/vis1.component';
-import { SpotifyComponent } from './spotify/spotify.component';
 import { SoundcloudComponent } from './soundcloud/soundcloud.component';
 
 
@@ -12,7 +11,6 @@ import { SoundcloudComponent } from './soundcloud/soundcloud.component';
   declarations: [
     AppComponent,
     Vis1Component,
-    SpotifyComponent,
     SoundcloudComponent
   ],
   imports: [

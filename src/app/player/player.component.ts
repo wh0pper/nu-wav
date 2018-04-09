@@ -2,14 +2,15 @@ import { Component, OnInit } from '@angular/core';
 declare var p5: any;
 
 @Component({
-  selector: 'app-vis1',
-  templateUrl: './vis1.component.html',
-  styleUrls: ['./vis1.component.css']
+  selector: 'app-player',
+  templateUrl: './player.component.html',
+  styleUrls: ['./player.component.css']
 })
-export class Vis1Component implements OnInit {
-  // private player;
+export class PlayerComponent implements OnInit {
   song;
   amplitude;
+  mic;
+
   constructor() { }
 
   ngOnInit() {
@@ -20,25 +21,28 @@ export class Vis1Component implements OnInit {
         p.createCanvas(canvasWidth, canvasHeight);
         this.song = p.loadSound('../assets/resonance.mp3', p.loaded);
         this.amplitude = new p5.Amplitude();
+        this.mic = new p5.AudioIn(); // for mic input vis
+        this.mic.start(); // for mic input vis
         p.frameRate(60);
-        console.log(this.song);
       }
 
-      p.draw = () => { //infinite looping
-        // console.log("drawing");
+      p.draw = () => {
         p.background(0);
-        var vol = this.amplitude.getLevel();
+
+        let songVol = this.amplitude.getLevel();
+        let micVol = this.mic.getLevel();
+
         p.fill(255);
         p.stroke(255);
-        p.ellipse(p.width/2,p.height/2,500*vol,500*vol);
+        p.ellipse(p.width/2,p.height/2,500*micVol,500*micVol); //swap micVol and songVol to show vis of different inputs
 
 
         p.fill(0);
-        p.ellipse(p.width/2,p.height/2,200*vol,200*vol);
+        p.ellipse(p.width/2,p.height/2,200*micVol,200*micVol); //swap micVol and songVol to show vis of different inputs
 
         p.fill('rgba(0,0,0,0)');
         p.stroke(255, 0, 0);
-        p.ellipse(p.width/2,p.height/2,100/vol,100/vol);
+        p.ellipse(p.width/2,p.height/2,100/micVol,100/micVol); //swap micVol and songVol to show vis of different inputs
       }
 
       p.mousePressed = () => {
@@ -53,22 +57,10 @@ export class Vis1Component implements OnInit {
       p.loaded = () => {
         console.log("song loaded");
         console.log(this.song);
-        this.song.play();
+        // this.song.play(); //to play song once song is loaded.
       }
 
     }
     let player = new p5(s);
   }
-
-  // loaded() {
-  //   console.log("song loaded");
-  //   console.log(this.song);
-  //   this.song.play();
-  // }
-
-
-
-
-
-
 }

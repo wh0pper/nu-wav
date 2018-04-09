@@ -1,0 +1,28 @@
+#logo {
+  width: 200px;
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+}
+
+.jumbotron  {
+  background-image: url('../../assets/audio2.png');
+  height: 250px;
+  background-color: black;
+}
+
+#play, #pause {
+  background-color: black;
+  border: black;
+}
+
+.playpause {
+  text-align: center;
+}
+.playbutton {
+  width: 100px;
+}
+
+.pausebutton {
+  width: 120px;
+}

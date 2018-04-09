@@ -15,8 +15,8 @@ export class Vis1Component implements OnInit {
   ngOnInit() {
     const s = (p) => {
       p.setup = () => {
-        const canvasWidth = 800; //p.windowWidth;
-        const canvasHeight = 500; //p.windowHeight;
+        const canvasWidth = 1450; //p.windowWidth;
+        const canvasHeight = 600; //p.windowHeight;
         p.createCanvas(canvasWidth, canvasHeight);
         this.song = p.loadSound('../assets/resonance.mp3', p.loaded);
         this.amplitude = new p5.Amplitude();

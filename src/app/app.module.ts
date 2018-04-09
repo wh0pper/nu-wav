@@ -3,13 +3,15 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
-import { PlayerComponent } from './player/player.component';
+import { Vis1Component } from './vis1/vis1.component';
+import { SoundcloudComponent } from './soundcloud/soundcloud.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    PlayerComponent,
+    Vis1Component,
+    SoundcloudComponent
   ],
   imports: [
     BrowserModule

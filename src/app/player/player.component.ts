@@ -45,14 +45,6 @@ export class PlayerComponent implements OnInit {
         p.ellipse(p.width/2,p.height/2,100/micVol,100/micVol); //swap micVol and songVol to show vis of different inputs
       }
 
-      p.mousePressed = () => {
-        console.log("mouse press");
-        if ( this.song.isPlaying() ) {
-          this.song.pause();
-        } else {
-          this.song.play();
-        }
-      }
 
       p.loaded = () => {
         console.log("song loaded");
@@ -62,5 +54,13 @@ export class PlayerComponent implements OnInit {
 
     }
     let player = new p5(s);
+  }
+
+  playCurrentSong() {
+    if ( this.song.isPlaying() ) {
+      this.song.pause();
+    } else {
+      this.song.play();
+    }
   }
 }

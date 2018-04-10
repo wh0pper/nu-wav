@@ -29,6 +29,5 @@ export class SoundcloudComponent implements OnInit {
     //   SC.stream('/tracks/' + tracks.id).then(function(player){
     //     player.play();
     //   });
-    });
+    }
   }
-}

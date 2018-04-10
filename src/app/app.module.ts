@@ -6,6 +6,7 @@ import { PlayerComponent } from './player/player.component';
 import { SoundcloudComponent } from './soundcloud/soundcloud.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { Vis1Component } from './vis1/vis1.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     PlayerComponent,
     SoundcloudComponent,
     WelcomeComponent,
-    NavbarComponent
+    NavbarComponent,
+    Vis1Component
   ],
   imports: [
     BrowserModule

@@ -16,7 +16,11 @@ export class DatabaseService {
    addColors(newColorPref: ColorPref) {
     this.colors.push(newColorPref);
    }
-   getColors(){
+   getColors() {
     return this.database.list('colors');
+  }
+
+  colorDatabase() {
+   console.log('test');
   }
 }

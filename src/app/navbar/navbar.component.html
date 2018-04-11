@@ -25,10 +25,8 @@
                 <input #name type="text" class="form-control">
                 <input #color1 type="color">
                 <input #color2 type="color">
-                <br>
                 <input #color3 type="color">
-                <input #color4 type="color">
-                <br><br>
+                <input #color4 type="color"><br>
                 <button (click)="colors(name.value, color1.value, color2.value, color3.value, color4.value)" class="btn btn-primary" name="button" id="enter">Enter</button>
               </form>
             </div>
@@ -40,7 +38,7 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <div *ngFor="let colorScheme of colorSchemes">
-              <a class="dropdown-item" href="#">{{colorScheme.name}}</a>
+              <a (click)="chooseColor()" class="dropdown-item" href="#">{{colorScheme.name}}</a>
             </div>
           </div>
         </li>

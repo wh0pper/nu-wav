@@ -14,3 +14,7 @@ background-color:#53A351;
   background-color: black;
   border: black;
 }
+
+.dropdown-menu {
+  width: 250px;
+}

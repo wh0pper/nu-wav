@@ -20,15 +20,18 @@ export class NavbarComponent implements OnInit {
     this.databaseService.addColors(new ColorPref(name, color1, color2, color3, color4));
 
     this.databaseService.getColors().subscribe(data => {
-     this.colorSchemes=data;
+     this.colorSchemes = data;
    });
   }
 
+  chooseColor() {
+    this.databaseService.colorDatabase();
+  }
 
   ngOnInit() {
       this.databaseService.getColors().subscribe(data => {
-      this.colorSchemes=data;
+      this.colorSchemes = data;
    });
-      console.log(this.colorSchemes)
+      console.log(this.colorSchemes);
   }
 }

@@ -52,8 +52,8 @@ export class PlayerComponent implements OnInit {
       p.loaded = () => {
         console.log("song loaded");
         console.log(this.song);
-        // this.song.play(); //to play song once song is loaded.
-      }
+        this.song.play(); //to play song once song is loaded.
+      };
 
     }
     this.instantiateP5(propertyFunction);

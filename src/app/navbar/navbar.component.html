@@ -19,6 +19,29 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="#">Action</a>
           <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-item" aria-labelledby="navbarDropdown">
+            <form>
+              <label for="color">Color Scheme</label><br>
+              <input #name type="text" class="form-control">
+              <input #color1 type="color">
+              <input #color2 type="color">
+              <br>
+              <input #color3 type="color">
+              <input #color4 type="color">
+              <br><br>
+              <button (click)="colors(name.value, color1.value, color2.value, color3.value, color4.value)" class="btn btn-primary" name="button" id="enter">Enter</button>
+            </form>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Color Schemes
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <div *ngFor="let colorScheme of colorSchemes">
+            <a class="dropdown-item" href="#">{{colorScheme.name}}</a>
+          </div>
         </div>
       </li>
     </ul>

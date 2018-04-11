@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as SC from 'soundcloud';
-import { soundcloud_key } from '../../api-keys';
+import { soundcloud_key } from '../api-keys';
 
 @Component({
   selector: 'app-soundcloud',

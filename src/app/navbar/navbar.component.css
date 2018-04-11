@@ -1,7 +1,16 @@
-nav , .navbar-expand-lg {
-  background-color: black;
+nav {
+  background-color: black !important;
+  z-index: 1;
+}
+.nav-link {
+  color: white !important;
 }
 
-.nav-link {
-  color: #cdcdcd;
+#toggle {
+background-color:#53A351;
+}
+
+#enter {
+  background-color: black;
+  border: black;
 }

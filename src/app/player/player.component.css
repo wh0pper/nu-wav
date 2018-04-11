@@ -84,3 +84,8 @@
   width: 120px;
 }
 
+.player-visual {
+  position: relative;
+  margin: 12% auto;
+  display: block;
+}

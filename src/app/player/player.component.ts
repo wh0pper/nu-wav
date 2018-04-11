@@ -21,17 +21,25 @@ export class PlayerComponent implements OnInit {
 
   setupForEffectOne() {
     let propertyFunction = (p) => {
+
       p.setup = () => {
+        var cnv = p.createCanvas(p.windowWidth, p.windowHeight);
+        cnv.position(100, 100);
+        var x = (p.windowWidth - p.width) / 2;
+        var y = (p.windowHeight - p.height) / 2;
+        cnv.position(x, y);
+        p.background('rgba(0,0,0,0)');
+
         p.clear();
         // const canvasWidth = 1000;
-        const canvasHeight = 500;
-        p.windowWidth;
-        p.windowHeight;
-        this.effect1 = p.createCanvas(p.windowWidth, canvasHeight);
-        this.song = p.loadSound('../assets/cantthinkofanameyet_36.mp3', p.loaded);
+        const canvasHeight = 1000;
+        const canvasWidth = 2000;
+        // p.windowHeight;
+        this.effect1 = p.createCanvas(canvasWidth, canvasHeight);
+        this.song = p.loadSound('../assets/stay.mp3', p.loaded);
         this.amplitude = new p5.Amplitude();
         p.frameRate(30);
-      }
+      };
 
       p.draw = () => {
         p.background(0);
@@ -40,19 +48,29 @@ export class PlayerComponent implements OnInit {
 
         p.fill(255);
         p.stroke(255);
-        p.ellipse(p.width / 2, p.height / 2, 500 * songVol, 500 * songVol); //swap micVol and songVol to show vis of different inputs
+        p.ellipse(p.width / 15, p.height / 4, 500 * songVol, 500 * songVol); //swap micVol and songVol to show vis of different inputs
 
         p.fill(0);
-        p.ellipse(p.width/2,p.height/2,200*songVol,200*songVol); //swap micVol and songVol to show vis of different inputs
+        p.ellipse(p.width / 15, p.height / 4, 200 * songVol, 200 * songVol); //swap micVol and songVol to show vis of different inputs
         p.fill('rgba(0,0,0,0)');
         p.stroke(255, 0, 0);
-        p.ellipse(p.width/2,p.height/2,100/songVol,100/songVol); //swap micVol and songVol to show vis of different inputs
+        p.ellipse(p.width / 15, p.height / 4, 100 / songVol, 100 / songVol); //swap micVol and songVol to show vis of different inputs
+
+        p.fill(255);
+        p.stroke(255);
+        p.ellipse(p.width, p.height / 4, 500 * songVol, 500 * songVol); //swap micVol and songVol to show vis of different inputs
+
+        p.fill(0);
+        p.ellipse(p.width, p.height / 4, 200 * songVol, 200 * songVol); //swap micVol and songVol to show vis of different inputs
+        p.fill('rgba(0,0,0,0)');
+        p.stroke(255, 0, 0);
+        p.ellipse(p.width, p.height / 4, 100 / songVol, 100 / songVol); //swap micVol and songVol to show vis of different inputs
       }
 
       p.loaded = () => {
         console.log("song loaded");
         console.log(this.song);
-        this.song.play(); //to play song once song is loaded.
+        // this.song.play(); //to play song once song is loaded.
       };
 
     }
@@ -63,12 +81,12 @@ export class PlayerComponent implements OnInit {
     let propertyFunction = (p) => {
       p.setup = () => {
         p.clear();
-        const canvasWidth = 800; //p.windowWidth;
-        const canvasHeight = 500; //p.windowHeight;
-        this.effect1 = p.createCanvas(canvasWidth, canvasHeight);
+        // const canvasWidth = 800; //p.windowWidth;
+        // const canvasHeight = 500; //p.windowHeight;
+        this.effect1 = p.createCanvas(p.windowWidth, p.windowHeight);
         this.amplitude = new p5.Amplitude();
-        p.frameRate(60);
-      }
+        p.frameRate(30);
+      };
 
       p.draw = () => {
         p.background(0);
@@ -77,15 +95,15 @@ export class PlayerComponent implements OnInit {
 
         p.fill(255);
         p.stroke(255);
-        p.ellipse(p.width/2,p.height/2,500*songVol,100*songVol); //swap micVol and songVol to show vis of different inputs
+        p.ellipse(p.width / 2, p.height, 500 * songVol, 100 * songVol); //swap micVol and songVol to show vis of different inputs
 
         p.fill(0);
-        p.ellipse(p.width/2,p.height/2,200*songVol,50*songVol); //swap micVol and songVol to show vis of different inputs
+        p.ellipse(p.width / 2, p.height, 200 * songVol, 50 * songVol); //swap micVol and songVol to show vis of different inputs
         p.fill('rgba(0,0,0,0)');
         p.stroke(255, 0, 0);
-        p.ellipse(p.width/2,p.height/2,100/songVol,50/songVol); //swap micVol and songVol to show vis of different inputs
-      }
-    }
+        p.ellipse(p.width / 2, p.height, 100 / songVol, 50 / songVol); //swap micVol and songVol to show vis of different inputs
+      };
+    };
     this.instantiateP5(propertyFunction);
   }
 

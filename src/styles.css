@@ -4,3 +4,8 @@
 body {
   background-color: black;
 }
+
+#canvasContainer {
+  display: block !important;
+  margin: 0 auto !important;
+}

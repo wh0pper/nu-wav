@@ -1,10 +1,7 @@
 nav {
-  background-color: black !important;
-}
-.nav-link {
-  color: white !important;
+  background-color: black;
 }
 
-#toggle {
-background-color:#53A351;
+.nav-link {
+  color: #cdcdcd;
 }

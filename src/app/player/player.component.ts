@@ -23,12 +23,14 @@ export class PlayerComponent implements OnInit {
     let propertyFunction = (p) => {
       p.setup = () => {
         p.clear();
-        const canvasWidth = 800; //p.windowWidth;
-        const canvasHeight = 500; //p.windowHeight;
-        this.effect1 = p.createCanvas(canvasWidth, canvasHeight);
-        this.song = p.loadSound('../assets/resonance.mp3', p.loaded);
+        // const canvasWidth = 1000;
+        const canvasHeight = 500;
+        p.windowWidth;
+        p.windowHeight;
+        this.effect1 = p.createCanvas(p.windowWidth, canvasHeight);
+        this.song = p.loadSound('../assets/cantthinkofanameyet_36.mp3', p.loaded);
         this.amplitude = new p5.Amplitude();
-        p.frameRate(60);
+        p.frameRate(30);
       }
 
       p.draw = () => {
@@ -38,7 +40,7 @@ export class PlayerComponent implements OnInit {
 
         p.fill(255);
         p.stroke(255);
-        p.ellipse(p.width/2,p.height/2,500*songVol,500*songVol); //swap micVol and songVol to show vis of different inputs
+        p.ellipse(p.width / 2, p.height / 2, 500 * songVol, 500 * songVol); //swap micVol and songVol to show vis of different inputs
 
         p.fill(0);
         p.ellipse(p.width/2,p.height/2,200*songVol,200*songVol); //swap micVol and songVol to show vis of different inputs

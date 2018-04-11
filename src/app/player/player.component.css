@@ -1,0 +1,15 @@
+#play-button {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 48%;
+  height: 60px;
+}
+
+#play-button:hover {
+  cursor: pointer;
+}
+
+#play-button:active {
+  height: 65px;
+}

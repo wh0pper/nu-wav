@@ -1,14 +1,8 @@
 #logo {
-  width: 200px;
+  width: 300px;
   text-align: center;
   display: block;
   margin: 0 auto;
-}
-
-.jumbotron  {
-  background-image: url('../../assets/audio2.png');
-  height: 250px;
-  background-color: black;
 }
 
 #play, #pause {

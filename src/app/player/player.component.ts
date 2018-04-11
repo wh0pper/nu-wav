@@ -29,32 +29,46 @@ export class PlayerComponent implements OnInit {
       };
 
 
+      function draw() {
+        p.background(0);
+        p.fill(255);
+        var level = this.amplitude.getLevel();
+        var size = p.map(level, 0, 1, 0, 200);
+        p.ellipse(p.width/2, p.height/2, size, size);
+      }
+
       p.draw = () => {
         p.background(0);
 
+        // this.song.play();
+
         const waveform = this.fft.waveform();  // analyze the waveform
-        const songVol = this.amplitude.getLevel();
         const micVol = this.mic.getLevel();
-        console.log(waveform);
+        const songVol = this.amplitude.getLevel();
+        console.log(songVol);
 
         p.fill(255);
         p.stroke(255);
-        p.ellipse(p.width / 2, p.height / 2, 1000 * micVol, 1000 * songVol); // swap micVol and songVol to show vis of different inputs
-
+        // p.ellipse(p.width / 1.1875, p.height / 2.25, 500 * micVol, 500 * micVol); // swap micVol and songVol to show vis of different inputs
+        p.ellipse(p.width / 1.1875, p.height / 2.25, 500 * songVol, 500 * songVol);
 
         p.fill(0);
-        p.ellipse(p.width / 2, p.height / 2, 400 * micVol, 400 * songVol); // swap micVol and songVol to show vis of different inputs
+        // p.ellipse(p.width / 1.1875, p.height / 2.25, 200 * micVol, 200 * micVol); // swap micVol and songVol to show vis of different inputs
+        p.ellipse(p.width / 1.1875, p.height / 2.25, 200 * songVol, 200 * songVol); // swap micVol and songVol to show vis of different inputs
+
 
         p.fill('rgba(0,0,0,0)');
         p.stroke(255, 0, 0);
-        p.ellipse(p.width / 2, p.height / 2, 200 / micVol, 200 / songVol); // swap micVol and songVol to show vis of different inputs
+        // p.ellipse(p.width / 1.1875, p.height / 2.25, 200 / micVol, 200 / micVol); // swap micVol and songVol to show vis of different inputs
+        p.ellipse(p.width / 1.1875, p.height / 2.25, 200 / songVol, 200 / songVol); // swap micVol and songVol to show vis of different inputs
+
       };
 
 
       p.loaded = () => {
         console.log("song loaded");
         console.log(this.song);
-        // this.song.play(); //to play song once song is loaded.
+        this.song.play(); //to play song once song is loaded.
       };
 
     };

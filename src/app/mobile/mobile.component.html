@@ -1,46 +1,8 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">FREQ</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon" id="toggle"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a routerLink=" ">Home</a>
-      </li>
-    </ul>
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Preferences
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-item" aria-labelledby="navbarDropdown">
-              <form>
-                <label for="color">Color Scheme</label><br>
-                <input #name type="text" class="form-control">
-                <input #color1 type="color">
-                <input #color2 type="color">
-                <input #color3 type="color">
-                <input #color4 type="color"><br>
-                <button (click)="colors(name.value, color1.value, color2.value, color3.value, color4.value)" class="btn btn-primary" name="button" id="enter">Enter</button>
-              </form>
-            </div>
-          </div>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Color Schemes
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <div *ngFor="let colorScheme of colorSchemes">
-              <a (click)="chooseColor()" class="dropdown-item" href="#">{{colorScheme.name}}</a>
-            </div>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </nav>
+<div class="player-visual">
+  <img src="../assets/freq-gradient.png" id="logo">
+</div>
+<h2>Select Color Palette</h2>
+<div *ngFor="let colorScheme of colorSchemes">
+  <div (click)="chooseColor()" class="scheme" value="{{colorScheme.name}}">
+  <div>
+</div>

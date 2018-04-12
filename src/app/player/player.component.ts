@@ -3,6 +3,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { DatabaseService } from '../database.service';
 import { ColorPref } from '../models/colorpref.model';
 import { AngularFireDatabase, FirebaseListObservable  } from 'angularfire2/database';
+import { FormsModule } from '@angular/forms';
 
 declare var p5: any;
 

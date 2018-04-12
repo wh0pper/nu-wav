@@ -1,6 +1,21 @@
+h2 {
+  color: white !important;
+  text-align: center;
+
+}
 nav {
   background-color: black !important;
   z-index: 1;
+}
+
+label {
+  color: white;
+}
+
+form {
+  text-align: center;
+  display: block;
+  margin: 0 auto;
 }
 .nav-link {
   color: white !important;
@@ -9,12 +24,57 @@ nav {
 #toggle {
 background-color:#53A351;
 }
-
+#inputName {
+  width: auto;
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  background-color: white;
+}
 #enter {
   background-color: black;
   border: black;
 }
+#logo {
+  display: block;
+  position: relative;
+  height: 300px;
+  margin: 0 auto;
+  z-index: 1;
+  background: linear-gradient(270deg, #c10000, #f7b000, #02cbe1, #dd4600);
+  background-size: 800% 800%;
 
+  -webkit-animation: AnimationName 30s ease infinite;
+  -moz-animation: AnimationName 30s ease infinite;
+  animation: AnimationName 30s ease infinite;
+}
+@-webkit-keyframes AnimationName {
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+@-moz-keyframes AnimationName {
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+@keyframes AnimationName {
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
 .dropdown-menu {
   width: 250px;
+}
+
+.scheme{
+  width: auto;
+  text-align: center;
+  background-color: white;
+  display: block;
+  margin: 0 auto;
+}
+
+.colorscheme {
+  border: none;
 }

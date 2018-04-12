@@ -37,7 +37,10 @@ button {
   -moz-animation: AnimationName 30s ease infinite;
   animation: AnimationName 30s ease infinite;
 }
-
+.button-container {
+  position:relative;
+    z-index: 1;
+}
 @-webkit-keyframes AnimationName {
   0%{background-position:0% 50%}
   50%{background-position:100% 50%}

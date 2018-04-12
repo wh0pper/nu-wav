@@ -5,13 +5,18 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
 import { Injectable } from '@angular/core';
 import { ColorPref } from './models/colorpref.model';
 import { AngularFireModule } from 'angularfire2';
-
+import { CreateBubble } from './models/bubbles.model';
 
 @Injectable()
 export class DatabaseService {
   colors: FirebaseListObservable<any[]>;
+  bubbles: FirebaseListObservable<any[]>;
+
+
  constructor(private database: AngularFireDatabase) {
    this.colors = this.database.list('colors');
+   this.bubbles = this.database.list('colors');
+
  }
    addColors(newColorPref: ColorPref) {
     this.colors.push(newColorPref);
@@ -20,7 +25,7 @@ export class DatabaseService {
     return this.database.list('colors');
   }
 
-  colorDatabase() {
-   console.log('test');
+  newBubbles(createBubble: CreateBubble) {
+   this.bubbles.push(createBubble);
   }
 }

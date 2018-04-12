@@ -4,7 +4,8 @@ import { DatabaseService } from '../database.service';
 import { ColorPref } from '../models/colorpref.model';
 import { AngularFireDatabase, FirebaseListObservable  } from 'angularfire2/database';
 import { FormsModule } from '@angular/forms';
-
+import { CreateBubble } from '../models/bubbles.model';
+import { MobileComponent } from '../mobile/mobile.component'
 declare var p5: any;
 
 @Component({
@@ -16,7 +17,9 @@ declare var p5: any;
 })
 
 export class PlayerComponent implements OnInit {
+  partyTime: any;
   colorSchemes: any[];
+  bubble: boolean;
   song;
   amplitude;
   effect1;
@@ -28,8 +31,10 @@ constructor(public databaseService: DatabaseService) { }
     this.setupForEffectOne();
     this.databaseService.getColors().subscribe(data => {
     this.colorSchemes = data;
- });
-    console.log(this.colorSchemes);
+    });
+    this.partyTime()
+      .then(alert("hello"))
+
   }
 
   colors(name: string, color1: string, color2: string, color3: string, color4: string) {
@@ -40,9 +45,9 @@ constructor(public databaseService: DatabaseService) { }
    });
   }
 
-  chooseColor() {
-    this.databaseService.colorDatabase();
-  }
+  // chooseColor() {
+  //   this.databaseService.colorDatabase();
+  // }
 
   setupForEffectOne() {
     let propertyFunction = (p) => {
@@ -143,4 +148,5 @@ constructor(public databaseService: DatabaseService) { }
       this.song.play();
     }
   }
+
 }

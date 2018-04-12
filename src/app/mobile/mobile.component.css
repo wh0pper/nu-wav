@@ -1,40 +1,9 @@
 h2, h3 {
   color: white !important;
   text-align: center;
-
-}
-nav {
-  background-color: black !important;
-  z-index: 1;
+  font-family: 'Tajawal', sans-serif;
 }
 
-label {
-  color: white;
-}
-
-form {
-  text-align: center;
-  display: block;
-  margin: 0 auto;
-}
-.nav-link {
-  color: white !important;
-}
-
-#toggle {
-background-color:#53A351;
-}
-#inputName {
-  width: auto;
-  text-align: center;
-  display: block;
-  margin: 0 auto;
-  background-color: white;
-}
-#enter {
-  background-color: black;
-  border: black;
-}
 #logo {
   display: block;
   position: relative;
@@ -63,9 +32,6 @@ background-color:#53A351;
   50%{background-position:100% 50%}
   100%{background-position:0% 50%}
 }
-.dropdown-menu {
-  width: 250px;
-}
 
 .scheme{
   width: auto;
@@ -73,4 +39,14 @@ background-color:#53A351;
   background-color: black;
   display: block;
   margin: 0 auto;
+}
+.results {
+  position:relative;
+    z-index: 1;
+}
+.bigDiv {
+  width: 414px;
+  height: 736px;
+  background-color:black
+
 }

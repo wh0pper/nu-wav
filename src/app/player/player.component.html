@@ -7,13 +7,14 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a routerLink="/">Home</a>
+        <a routerLink="">Home</a>
       </li>
     </ul>
     <ul>
-      <li (click)="setupForEffectOne()" class="btn middle">Effect 1</li>
-      <li (click)="setupForEffectTwo()" class="btn middle">Effect 2</li>
-      <li (click)="setupForEffectThree()" class="btn middle">Effect 3</li>
+      <li (click)="setupForAmplitude()" class="btn middle">Effect 1</li>
+      <li (click)="setupForFFT()" class="btn middle">Effect 2</li>
+      <!-- <li (click)="setupForFFTTwo()" class="btn middle">Effect 3</li> -->
+      <li (click)="selectNewSong()" class="btn middle">Change song</li>
     </ul>
     <ul class="navbar-nav ml-auto">
       <li class="nav-item dropdown">
@@ -44,11 +45,16 @@
             <div *ngFor="let colorScheme of colorSchemes">
               <input (click)="chooseColor()" class="dropdown-item" readonly="readonly" value="{{colorScheme.name}}">
             </div>
+            <div *ngFor="let point of points">
+              <h6>{{point.name}}</h6>
+            </div>
           </div>
         </li>
       </ul>
     </div>
   </nav>
   <img src="./assets/play1.png" alt="play" id="play-button" (click)="playCurrentSong()">
+  <!-- <div *ngIf="showFFT" id="fftcanvas"></div>
+  <div *ngIf="showAmp" id="ampcanvas"></div> -->
 
 <!-- <app-vis1></app-vis1> -->

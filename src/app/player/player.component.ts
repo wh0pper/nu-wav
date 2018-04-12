@@ -60,7 +60,7 @@ constructor(public databaseService: DatabaseService) { }
         const canvasWidth = p.windowWidth;
         // p.windowHeight;
         this.effect1 = p.createCanvas(canvasWidth, canvasHeight);
-        this.song = p.loadSound('../assets/1direc.m4a', p.loaded);
+        this.song = p.loadSound('../assets/json.m4a', p.loaded);
         this.amplitude = new p5.Amplitude();
         p.frameRate(30);
       };

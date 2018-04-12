@@ -22,7 +22,7 @@ export class PlayerComponent implements OnInit {
   points:any[];
   bubble: boolean;
 
-  songPaths: string[] = ['../assets/resonance.mp3', '../assets/disco.mp3', '../cool-song.mp3'];
+  songPaths: string[] = ['../assets/disco.mp3', '../assets/resonance.mp3', '../cool-song.mp3'];
   songIndex: number = 0;
 
   song;
@@ -34,7 +34,7 @@ export class PlayerComponent implements OnInit {
 constructor(public databaseService: DatabaseService) { }
 
   ngOnInit() {
-    this.setupForEffectOne();
+    this.setupForFFT();
     this.databaseService.getColors().subscribe(data => {
     this.colorSchemes = data;
     });
@@ -58,9 +58,10 @@ constructor(public databaseService: DatabaseService) { }
     } else {
       this.songIndex = 0;
     }
+    this.setupForFFT();
   }
 
-  setupForEffectOne() {
+  setupForFFT() {
     let propertyFunction = (p) => {
 
       p.setup = () => {
@@ -70,15 +71,12 @@ constructor(public databaseService: DatabaseService) { }
         var y = (p.windowHeight - p.height) / 2;
         cnv.position(x, y);
         p.background('rgba(0,0,0,0)');
-
         p.clear();
-        // const canvasWidth = 1000;
         const canvasHeight = p.windowHeight;
         const canvasWidth = p.windowWidth;
-        // p.windowHeight;
         this.effect1 = p.createCanvas(canvasWidth, canvasHeight);
-        this.song = p.loadSound('../assets/resonance.mp3', p.loaded);
-        // this.amplitude = new p5.Amplitude();
+        let songPath = this.songPaths[this.songIndex];
+        this.song = p.loadSound(songPath, p.loaded);
         this.fft = new p5.FFT(0.5, 128);
         p.frameRate(30);
       };
@@ -86,17 +84,26 @@ constructor(public databaseService: DatabaseService) { }
       p.draw = () => {
         p.background(0);
 
-        // let songVol = this.amplitude.getLevel();
         let spectrum = this.fft.analyze();
-        // console.log(songVol);
 
         for (var i=0; i < spectrum.length; i++) {
           let thisAmp = spectrum[i];
-          p.stroke(0,0,0);
+          p.stroke(255,255,255);
           p.fill(255,255,255);
           let x = i * 10;
-          p.rect(x, 0, 8, spectrum[i])
+          p.rect(p.windowWidth/2 + x, p.windowHeight/2, 8, spectrum[i]);
+          p.rect(p.windowWidth/2 - x, p.windowHeight/2, 8, spectrum[i]);
+          p.rect(p.windowWidth/2 + x, p.windowHeight/2, 8, -spectrum[i]);
+          p.rect(p.windowWidth/2 - x, p.windowHeight/2, 8, -spectrum[i]);
+
+          //inner visual
+          p.stroke(255,255,255);
+          p.line(p.windowWidth/2 + x, spectrum[i]/3, p.windowWidth/2 + x+8, spectrum[i]/3);
+          // p.line(p.windowWidth/2 - x, p.windowHeight/2, 8, spectrum[i]/3);
+          // p.line(p.windowWidth/2 + x, p.windowHeight/2, 8, -spectrum[i]/3);
+          // p.line(p.windowWidth/2 - x, p.windowHeight/2, 8, -spectrum[i]/3);
         }
+
         // p.fill(255,100,100);
         // p.rect(p.windowWidth, p.windowHeight, 10, 10);
         // p.rect(0, 0, 100, 100);
@@ -132,35 +139,33 @@ constructor(public databaseService: DatabaseService) { }
     this.instantiateP5(propertyFunction);
   }
 
-  // setupForEffectTwo() {
-  //   let propertyFunction = (p) => {
-  //     p.setup = () => {
-  //       p.clear();
-  //       // const canvasWidth = 800; //p.windowWidth;
-  //       // const canvasHeight = 500; //p.windowHeight;
-  //       this.effect1 = p.createCanvas(p.windowWidth, p.windowHeight);
-  //       this.amplitude = new p5.Amplitude();
-  //       p.frameRate(60);
-  //     };
-  //
-  //     p.draw = () => {
-  //       p.background(0);
-  //
-  //       let songVol = this.amplitude.getLevel();
-  //
-  //       p.fill(255);
-  //       p.stroke(255);
-  //       p.ellipse(p.width / 2, p.height, 500 * songVol, 100 * songVol); //swap micVol and songVol to show vis of different inputs
-  //
-  //       p.fill(0);
-  //       p.ellipse(p.width / 2, p.height, 200 * songVol, 50 * songVol); //swap micVol and songVol to show vis of different inputs
-  //       p.fill('rgba(0,0,0,0)');
-  //       p.stroke(255, 0, 0);
-  //       p.ellipse(p.width / 2, p.height, 100 / songVol, 50 / songVol); //swap micVol and songVol to show vis of different inputs
-  //     };
-  //   };
-  //   this.instantiateP5(propertyFunction);
-  // }
+  setupForAmplitude() {
+    let propertyFunction = (p) => {
+      p.setup = () => {
+        p.clear();
+        this.effect1 = p.createCanvas(p.windowWidth, p.windowHeight);
+        this.amplitude = new p5.Amplitude();
+        p.frameRate(60);
+      };
+
+      p.draw = () => {
+        p.background(0);
+
+        let songVol = this.amplitude.getLevel();
+
+        p.fill(255);
+        p.stroke(255);
+        p.ellipse(p.width / 2, p.height, 500 * songVol, 500 * songVol); //swap micVol and songVol to show vis of different inputs
+
+        p.fill(0);
+        p.ellipse(p.width / 2, p.height, 200 * songVol, 200 * songVol); //swap micVol and songVol to show vis of different inputs
+        p.fill('rgba(0,0,0,0)');
+        p.stroke(255, 0, 0);
+        p.ellipse(p.width / 2, p.height, 100 / songVol, 100 / songVol); //swap micVol and songVol to show vis of different inputs
+      };
+    };
+    this.instantiateP5(propertyFunction);
+  }
 
   instantiateP5(s) {
     let player = new p5(s);

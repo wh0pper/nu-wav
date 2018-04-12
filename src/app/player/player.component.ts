@@ -30,6 +30,8 @@ export class PlayerComponent implements OnInit {
   effect1;
   effect2;
   fft;
+  // showFFT: boolean = true;
+  // showAmp: boolean = false;
 
 constructor(public databaseService: DatabaseService) { }
 
@@ -62,8 +64,11 @@ constructor(public databaseService: DatabaseService) { }
   }
 
   setupForFFT() {
+    let oldCanvases = document.getElementsByTagName('canvas')
+    while (oldCanvases[0]) oldCanvases[0].parentNode.removeChild(oldCanvases[0]);
     let propertyFunction = (p) => {
-
+      // this.showFFT = true;
+      // this.showAmp = false;
       p.setup = () => {
         var cnv = p.createCanvas(p.windowWidth, p.windowHeight);
         cnv.position(100, 100);
@@ -97,36 +102,12 @@ constructor(public databaseService: DatabaseService) { }
           p.rect(p.windowWidth/2 - x, p.windowHeight/2, 8, -spectrum[i]);
 
           //inner visual
-          p.stroke(255,255,255);
-          p.line(p.windowWidth/2 + x, spectrum[i]/3, p.windowWidth/2 + x+8, spectrum[i]/3);
+          // p.stroke(255,255,255);
+          // p.line(p.windowWidth/2 + x, spectrum[i]/3, p.windowWidth/2 + x+8, spectrum[i]/3);
           // p.line(p.windowWidth/2 - x, p.windowHeight/2, 8, spectrum[i]/3);
           // p.line(p.windowWidth/2 + x, p.windowHeight/2, 8, -spectrum[i]/3);
           // p.line(p.windowWidth/2 - x, p.windowHeight/2, 8, -spectrum[i]/3);
         }
-
-        // p.fill(255,100,100);
-        // p.rect(p.windowWidth, p.windowHeight, 10, 10);
-        // p.rect(0, 0, 100, 100);
-
-        // p.fill(255);
-        // p.stroke(255);
-        // p.ellipse(p.width / 1.2, p.height / 3, 500 * songVol, 500 * songVol);
-
-        // p.fill(0);
-        // p.ellipse(p.width / 1.2, p.height / 3, 200 * songVol, 200 * songVol);
-        // p.fill('rgba(0,0,0,0)');
-        // p.stroke(255, 0, 0);
-        // p.ellipse(p.width / 1.2, p.height / 3, 100 / songVol, 100 / songVol);
-        //
-        // p.fill(255);
-        // p.stroke(255);
-        // p.ellipse(p.width/5, p.height / 3, 500 * songVol, 500 * songVol);
-        //
-        // p.fill(0);
-        // p.ellipse(p.width/5, p.height / 3, 200 * songVol, 200 * songVol);
-        // p.fill('rgba(0,0,0,0)');
-        // p.stroke("#FFD700");
-        // p.ellipse(p.width/5, p.height / 3, 100 / songVol, 100 / songVol);
       }
 
       p.loaded = () => {
@@ -139,7 +120,58 @@ constructor(public databaseService: DatabaseService) { }
     this.instantiateP5(propertyFunction);
   }
 
+  setupForFFTTwo() {
+    let oldCanvases = document.getElementsByTagName('canvas')
+    while (oldCanvases[0]) oldCanvases[0].parentNode.removeChild(oldCanvases[0]);
+    let propertyFunction = (p) => {
+      // this.showFFT = true;
+      // this.showAmp = false;
+      p.setup = () => {
+        var cnv = p.createCanvas(p.windowWidth, p.windowHeight);
+        cnv.position(100, 100);
+        var x = (p.windowWidth - p.width) / 2;
+        var y = (p.windowHeight - p.height) / 2;
+        cnv.position(x, y);
+        p.background('rgba(0,0,0,0)');
+        p.clear();
+        const canvasHeight = p.windowHeight;
+        const canvasWidth = p.windowWidth;
+        this.effect1 = p.createCanvas(canvasWidth, canvasHeight);
+        let songPath = this.songPaths[this.songIndex];
+        this.song = p.loadSound(songPath, p.loaded);
+        this.fft = new p5.FFT(0.5, 128);
+        p.frameRate(30);
+      };
+
+      p.draw = () => {
+        p.background(0);
+
+        let spectrum = this.fft.analyze();
+
+        for (var i=0; i < spectrum.length; i++) {
+          let thisAmp = spectrum[i];
+          p.stroke(255);
+          p.fill(255);
+          let x = i * 10;
+          p.rect(p.windowWidth/2, p.windowHeight/2, spectrum[i]*5, spectrum[i]*5)
+
+          //inner visual
+          // p.stroke(255,255,255);
+          // p.line(p.windowWidth/2 + x, spectrum[i]/3, p.windowWidth/2 + x+8, spectrum[i]/3);
+          // p.line(p.windowWidth/2 - x, p.windowHeight/2, 8, spectrum[i]/3);
+          // p.line(p.windowWidth/2 + x, p.windowHeight/2, 8, -spectrum[i]/3);
+          // p.line(p.windowWidth/2 - x, p.windowHeight/2, 8, -spectrum[i]/3);
+        }
+      }
+    }
+    this.instantiateP5(propertyFunction);
+  }
+
   setupForAmplitude() {
+    let oldCanvases = document.getElementsByTagName('canvas')
+    while (oldCanvases[0]) oldCanvases[0].parentNode.removeChild(oldCanvases[0]);
+    // this.showFFT = false;
+    // this.showAmp = true;
     let propertyFunction = (p) => {
       p.setup = () => {
         p.clear();
@@ -155,13 +187,13 @@ constructor(public databaseService: DatabaseService) { }
 
         p.fill(255);
         p.stroke(255);
-        p.ellipse(p.width / 2, p.height, 500 * songVol, 500 * songVol); //swap micVol and songVol to show vis of different inputs
+        p.ellipse(p.windowWidth / 2, p.windowHeight/2, 500 * songVol, 500 * songVol); //swap micVol and songVol to show vis of different inputs
 
         p.fill(0);
-        p.ellipse(p.width / 2, p.height, 200 * songVol, 200 * songVol); //swap micVol and songVol to show vis of different inputs
+        p.ellipse(p.windowWidth / 2, p.windowHeight/2, 200 * songVol, 200 * songVol); //swap micVol and songVol to show vis of different inputs
         p.fill('rgba(0,0,0,0)');
         p.stroke(255, 0, 0);
-        p.ellipse(p.width / 2, p.height, 100 / songVol, 100 / songVol); //swap micVol and songVol to show vis of different inputs
+        p.ellipse(p.windowWidth / 2, p.windowHeight/2, 100 / songVol, 100 / songVol); //swap micVol and songVol to show vis of different inputs
       };
     };
     this.instantiateP5(propertyFunction);
@@ -172,6 +204,7 @@ constructor(public databaseService: DatabaseService) { }
   }
 
   playCurrentSong() {
+    console.log(this.song.isPlaying());
     if ( this.song.isPlaying() ) {
       this.song.pause();
     } else {
@@ -181,7 +214,6 @@ constructor(public databaseService: DatabaseService) { }
 
   bubbles(bubble) {
      this.databaseService.newBubbles(new CreateBubble(bubble));
-
      this.databaseService.getBubbles().subscribe(data => {
       this.points = data;
     });

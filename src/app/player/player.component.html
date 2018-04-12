@@ -7,7 +7,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a routerLink="home">Home</a>
+        <a routerLink="">Home</a>
       </li>
     </ul>
     <ul>
@@ -42,7 +42,10 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <div *ngFor="let colorScheme of colorSchemes">
-              <a (click)="chooseColor()" class="dropdown-item" href="#">{{colorScheme.name}}</a>
+              <input (click)="chooseColor()" class="dropdown-item" readonly="readonly" value="{{colorScheme.name}}">
+            </div>
+            <div *ngFor="let point of points">
+              <h6>{{point.name}}</h6>
             </div>
           </div>
         </li>
@@ -50,5 +53,4 @@
     </div>
   </nav>
   <img src="./assets/play1.png" alt="play" id="play-button" (click)="playCurrentSong()">
-
 <!-- <app-vis1></app-vis1> -->

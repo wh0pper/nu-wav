@@ -13,6 +13,7 @@ import { Vis1Component } from './vis1/vis1.component';
 import { HomeComponent } from './home/home.component';
 import { routing } from './app.routing';
 import { MobileComponent } from './mobile/mobile.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { MobileComponent } from './mobile/mobile.component';
     MobileComponent
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(firebaseConfig),

@@ -1,4 +1,10 @@
-#play-button {
+
+h1 {
+  color:white;
+  position: absolute;
+  z-index: 1;
+  }
+  #play-button {
   display: block;
   margin: 0 auto;
   height: 100px;

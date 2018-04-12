@@ -28,4 +28,7 @@ export class DatabaseService {
   newBubbles(createBubble: CreateBubble) {
    this.bubbles.push(createBubble);
   }
+  getBubbles() {
+   return this.database.list('colors');
+ }
 }

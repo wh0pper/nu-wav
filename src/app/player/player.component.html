@@ -44,11 +44,13 @@
             <div *ngFor="let colorScheme of colorSchemes">
               <input (click)="chooseColor()" class="dropdown-item" readonly="readonly" value="{{colorScheme.name}}">
             </div>
+            <div *ngFor="let point of points">
+              <h6>{{point.name}}</h6>
+            </div>
           </div>
         </li>
       </ul>
     </div>
   </nav>
   <img src="./assets/play1.png" alt="play" id="play-button" (click)="playCurrentSong()">
-
 <!-- <app-vis1></app-vis1> -->

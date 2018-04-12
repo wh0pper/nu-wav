@@ -17,8 +17,8 @@ declare var p5: any;
 })
 
 export class PlayerComponent implements OnInit {
-  partyTime: any;
   colorSchemes: any[];
+  points:any[];
   bubble: boolean;
   song;
   amplitude;
@@ -32,9 +32,6 @@ constructor(public databaseService: DatabaseService) { }
     this.databaseService.getColors().subscribe(data => {
     this.colorSchemes = data;
     });
-    this.partyTime()
-      .then(alert("hello"))
-
   }
 
   colors(name: string, color1: string, color2: string, color3: string, color4: string) {
@@ -149,4 +146,12 @@ constructor(public databaseService: DatabaseService) { }
     }
   }
 
+  bubbles(bubble) {
+     this.databaseService.newBubbles(new CreateBubble(bubble));
+
+     this.databaseService.getBubbles().subscribe(data => {
+      this.points = data;
+    });
+    return this.points
+   }
 }

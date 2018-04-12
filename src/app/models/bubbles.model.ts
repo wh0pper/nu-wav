@@ -1,5 +1,5 @@
 export class CreateBubble {
   constructor(
-    public bubble: boolean
+    public bubble: boolean = true, 
   ) {}
 }

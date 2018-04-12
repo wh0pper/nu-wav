@@ -4,6 +4,10 @@ h2, h3 {
   font-family: 'Tajawal', sans-serif;
 }
 
+canvas {
+  display: none;
+}
+
 #logo {
   display: block;
   position: relative;
@@ -45,8 +49,12 @@ h2, h3 {
     z-index: 1;
 }
 .bigDiv {
-  width: 414px;
-  height: 736px;
-  background-color:black
-
+  background-color:black;
+  display: block;
+  margin: 0 auto;
+  text-align:center;
+}
+.butt {
+  position: relative;
+  z-index: 1;
 }

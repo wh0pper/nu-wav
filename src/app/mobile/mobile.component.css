@@ -1,4 +1,4 @@
-h2 {
+h2, h3 {
   color: white !important;
   text-align: center;
 
@@ -70,11 +70,7 @@ background-color:#53A351;
 .scheme{
   width: auto;
   text-align: center;
-  background-color: white;
+  background-color: black;
   display: block;
   margin: 0 auto;
-}
-
-.colorscheme {
-  border: none;
 }

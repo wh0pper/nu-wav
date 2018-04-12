@@ -1,4 +1,4 @@
-
+import { ActivatedRoute, Params } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { DatabaseService } from '../database.service';
 import { ColorPref } from '../models/colorpref.model';

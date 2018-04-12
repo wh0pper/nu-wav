@@ -24,7 +24,8 @@ export class PlayerComponent implements OnInit {
 
   songPaths: string[] = ['../assets/resonance.mp3'];
   songIndex: number = 0;
-
+  fftActive: boolean = true;
+  ampActive: boolean = false;
   song;
   amplitude;
   effect1;
@@ -55,6 +56,8 @@ constructor(public databaseService: DatabaseService) { }
   }
 
   setupForFFT() {
+    this.fftActive = true;
+    this.ampActive = false;
     let oldCanvases = document.getElementsByTagName('canvas')
     while (oldCanvases[0]) oldCanvases[0].parentNode.removeChild(oldCanvases[0]);
     let propertyFunction = (p) => {
@@ -112,6 +115,8 @@ constructor(public databaseService: DatabaseService) { }
   }
 
   setupForAmplitude() {
+    this.fftActive = false;
+    this.ampActive = true;
     let oldCanvases = document.getElementsByTagName('canvas')
     while (oldCanvases[0]) oldCanvases[0].parentNode.removeChild(oldCanvases[0]);
     // this.showFFT = false;
@@ -168,7 +173,11 @@ constructor(public databaseService: DatabaseService) { }
 
      this.databaseService.getBubbles().subscribe(data => {
      this.points = data;
-     this.setupForAmplitude();
+     if (this.fftActive) {
+       this.setupForAmplitude();
+     } else if (this.ampActive) {
+       this.setupForFFT();
+     }
     });
    }
  }

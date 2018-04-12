@@ -41,7 +41,7 @@
 #logo {
   display: block;
   position: relative;
-  height: 500px;
+  /*height: 500px;*/
   margin: 0 auto;
   z-index: 1;
   background: linear-gradient(270deg, #c10000, #f7b000, #02cbe1, #dd4600);

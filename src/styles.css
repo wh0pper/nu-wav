@@ -3,9 +3,22 @@
 
 body {
   background-color: black;
+  z-index: 0;
 }
 
+/*canvas {*/
+  /*position: absolute;*/
+  /*display: block;*/
+  /*z-index: 2 ;*/
+  /*margin: 25% 5%;*/
+  /*-webkit-transform: rotate(180deg);*/
+  /*-moz-transform: rotate(180deg);*/
+  /*-o-transform: rotate(180deg);*/
+  /*-ms-transform: rotate(180deg);*/
+  /*transform: rotate(180deg);*/
+/*}*/
+
 #canvasContainer {
-  display: block !important;
-  margin: 0 auto !important;
+  /*display: block !important;*/
+  /*margin: 0 auto !important;*/
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { DatabaseService } from '../database.service';
 import { ColorPref } from '../models/colorpref.model';
@@ -6,6 +6,7 @@ import { AngularFireDatabase, FirebaseListObservable  } from 'angularfire2/datab
 import { FormsModule } from '@angular/forms';
 import { routing } from '../app.routing';
 import { CreateBubble } from '../models/bubbles.model';
+import { PlayerComponent } from '../player/player.component';
 
 
 @Component({
@@ -15,9 +16,10 @@ import { CreateBubble } from '../models/bubbles.model';
   providers : [DatabaseService]
 })
 export class MobileComponent implements OnInit {
+  @Output() sendTap = new EventEmitter();
   colorSchemes: any[];
-  bubbles: any[];
-  tapped: boolean =false
+  bubble: boolean;
+
 
   constructor(public databaseService: DatabaseService) { }
 
@@ -39,8 +41,13 @@ export class MobileComponent implements OnInit {
 //     this.databaseService.colorDatabase();
 // }
 }
- partyTime(bubble: boolean = true){
+ partyTime(bubble) {
    this.databaseService.newBubbles(new CreateBubble(bubble));
-   console.log("bubble")
  }
+
+ showAlert() {
+       this.sendTap.emit();
+   }
+
+
 }

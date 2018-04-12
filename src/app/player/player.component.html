@@ -1,9 +1,54 @@
-<div class="player-visual">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">FREQ</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon" id="toggle"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a routerLink="home">Home</a>
+      </li>
+    </ul>
+    <ul>
+      <li (click)="setupForEffectOne()" class="btn middle">Effect 1</li>
+      <li (click)="setupForEffectTwo()" class="btn middle">Effect 2</li>
+      <li (click)="setupForEffectThree()" class="btn middle">Effect 3</li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Preferences
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-item" aria-labelledby="navbarDropdown">
+              <form>
+                <label for="color">Color Scheme</label><br>
+                <input #name type="text" class="form-control">
+                <input #color1 type="color">
+                <input #color2 type="color">
+                <input #color3 type="color">
+                <input #color4 type="color"><br>
+                <button (click)="colors(name.value, color1.value, color2.value, color3.value, color4.value)" class="btn btn-primary" name="button" id="enter">Enter</button>
+              </form>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Color Schemes
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <div *ngFor="let colorScheme of colorSchemes">
+              <a (click)="chooseColor()" class="dropdown-item" href="#">{{colorScheme.name}}</a>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
   <img src="./assets/play1.png" alt="play" id="play-button" (click)="playCurrentSong()">
-  <br>
-  <div class="container">
-    <button (click)="setupForEffectOne()" class="btn">Effect 1</button>
-    <button (click)="setupForEffectTwo()" class="btn">Effect 2</button>
-  </div>
-</div>
+
 <!-- <app-vis1></app-vis1> -->

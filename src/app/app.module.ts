@@ -9,10 +9,10 @@ import { AppComponent } from './app.component';
 import { PlayerComponent } from './player/player.component';
 import { SoundcloudComponent } from './soundcloud/soundcloud.component';
 import { WelcomeComponent } from './welcome/welcome.component';
-import { NavbarComponent } from './navbar/navbar.component';
 import { Vis1Component } from './vis1/vis1.component';
 import { HomeComponent } from './home/home.component';
 import { routing } from './app.routing';
+import { MobileComponent } from './mobile/mobile.component';
 
 @NgModule({
   declarations: [
@@ -20,9 +20,9 @@ import { routing } from './app.routing';
     PlayerComponent,
     SoundcloudComponent,
     WelcomeComponent,
-    NavbarComponent,
     Vis1Component,
-    HomeComponent
+    HomeComponent,
+    MobileComponent
   ],
   imports: [
     BrowserModule,

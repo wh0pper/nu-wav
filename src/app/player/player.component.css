@@ -4,7 +4,8 @@ h1 {
   position: absolute;
   z-index: 1;
   }
-  #play-button {
+
+#play-button {
   display: block;
   margin: 0 auto;
   height: 100px;
@@ -43,7 +44,7 @@ h1 {
 }
 
 #play-button:active {
-  height: 65px;
+  height: 90px;
 }
 
 
